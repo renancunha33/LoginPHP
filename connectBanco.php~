@@ -1,0 +1,24 @@
+<html >
+<head>
+<title>Tela Inicial</title>
+</head>
+<?php
+include "conecta_mysql.inc";
+$user=$_POST["nome"];
+$pass=$_POST["senha"];
+$res = mysql_query("select * from LOGIN WHERE cd_login ='$user'");
+$linha= mysql_num_rows($res);
+if($linha != 0){
+	if($pass != mysql_result($res,0, "ds_senha")){
+	echo"acesso NEAGDO";
+  }else{
+	echo "acesso OK :)";
+}
+		
+}else{
+	echo"USER INVALIDO";
+}
+?>
+<body>
+</body>
+</html>

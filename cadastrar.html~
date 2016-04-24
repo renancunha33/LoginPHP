@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Cadastro</title>
+</head>
+
+<body>
+<center>
+<form method= "POST" action="cadastrar.php">
+Usuario:         <input type="text" name="nome" value=""><br /><br />
+Senha:           <input type="password" name="senha" value=""><br /><br />
+Nome real:         <input type="text" name="nomereal" value=""><br /><br />
+Telefone:         <input type="text" name="telefone" value=""><br /><br />
+<input type="submit" name="enviar" value="Cadastrar">
+</form>
+</center>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>LOGIN</title>
+</head>
+<center>
+<body>
+<form method= "POST" action="connectBanco.php">
+Usuario: <input type="text" name="nome" value=""><br /> <br />
+Senha   : <input type="password" name="senha" value=""><br /> <br />
+<input type="submit" name="enviar" value="ENTRAR">
+</form>
+<input type="submit" value="Cadastrar" onclick="location.href='cadastrar.html'">
+</body>
+</center>
+
+</html>
