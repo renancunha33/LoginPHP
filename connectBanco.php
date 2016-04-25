@@ -21,9 +21,15 @@
 		$pass=$_POST["senha"];
 		$res = mysql_query("select * from LOGIN WHERE cd_login ='$user'");
 		$linha= mysql_num_rows($res);
+		
 		if($linha != 0){
 			if($pass != mysql_result($res,0, "ds_senha")){
-				echo"<center><h3>ACESSO NEGADO</h3></center>";
+				echo"<center><h3>ACESSO NEGADO</h3></center>
+				<form  class='form-signin'method='post' action='login.php?valor=1'>
+				<button class='btn btn-lg btn-primary btn-block'type='submit' value='LOGIN'>
+				Login
+				</button>
+				</form>";
 				
 			}else{
 
@@ -45,6 +51,28 @@
 				</button>
 				</form>";
 
+				$reso = mysql_query("select * from DAODS");
+
+				echo "<div class='container-fluid'>
+				<table class='table table-striped table-bordered'>
+				<thead>
+				<tr >
+
+				<th>Nomes</th>
+				<th>Telefones</th>
+
+				</tr>
+				</thead>"; 
+
+				while($row = mysql_fetch_array($reso)){  
+
+					$nome = "'".$row['ds_nome']."'"; 
+
+					echo '<tr onclick="teste('.$nome.')"><td>' . $row['ds_nome'] . '</td><td>' . $row['ds_telefone'] . '</td></tr>'; 
+				}
+
+				echo "</table></div>";
+
 			}
 
 		}else{
@@ -56,39 +84,14 @@
 			</form>";
 		}
 		?>
-		<?php
-		include "conecta_mysql.inc";
-		$res = mysql_query("select * from DAODS");
+		
+		</div>
 
-		echo "<div class='container-fluid'>
-		<table class='table table-striped table-bordered'>
-		<thead>
-		<tr >
-
-		<th>Nomes</th>
-		<th>Telefones</th>
-
-		</tr>
-		</thead>"; 
-
-		while($row = mysql_fetch_array($res)){  
-
-			$nome = "'".$row['ds_nome']."'"; 
-
-			echo '<tr onclick="teste('.$nome.')"><td>' . $row['ds_nome'] . '</td><td>' . $row['ds_telefone'] . '</td></tr>'; 
-		}
-
-		echo "</table></div>";
-
-
-		?>
-	</div>
-	
-</body>
-<script type="text/javascript">
-function teste(nome) {
-	var nm = nome.toString();
-	alert("Você clicou no usuário :"+ nm);
-};
-</script>
-</html>
+		</body>
+		<script type="text/javascript">
+		function teste(nome) {
+			var nm = nome.toString();
+			alert("Você clicou no usuário :"+ nm);
+		};
+		</script>
+		</html>
