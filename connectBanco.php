@@ -7,6 +7,7 @@
 	<!-- Custom styles for this template -->
 	<link href="./bootstrap/signin.css" rel="stylesheet">
 	<script src="./bootstrap/ie-emulation-modes-warning.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<title>Tela Inicial</title>
 </head>
 
@@ -70,8 +71,11 @@
 		</tr>
 		</thead>"; 
 
-		while($row = mysql_fetch_array($res)){   
-			echo "<tr><td>" . $row['ds_nome'] . "</td><td>" . $row['ds_telefone'] . "</td></tr>"; 
+		while($row = mysql_fetch_array($res)){  
+
+			$nome = "'".$row['ds_nome']."'"; 
+
+			echo '<tr onclick="teste('.$nome.')"><td>' . $row['ds_nome'] . '</td><td>' . $row['ds_telefone'] . '</td></tr>'; 
 		}
 
 		echo "</table></div>";
@@ -79,5 +83,12 @@
 
 		?>
 	</div>
+	
 </body>
+<script type="text/javascript">
+function teste(nome) {
+	var nm = nome.toString();
+	alert("Você clicou no usuário :"+ nm);
+};
+</script>
 </html>
